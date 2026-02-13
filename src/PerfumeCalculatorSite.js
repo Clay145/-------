@@ -14,12 +14,7 @@ const iconStyle = {
   color: "#333",
 };
 
-const labelStyle = {
-  fontWeight: "bold",
-  marginBottom: "0.5rem",
-  display: "block",
-  color: "#333",
-};
+
 
 export default function PerfumeCalculatorSite() {
   const [volume, setVolume] = useState(10);
@@ -30,7 +25,7 @@ export default function PerfumeCalculatorSite() {
   const [alcoholCostPerMl, setAlcoholCostPerMl] = useState(0);
   const [bottleCost, setBottleCost] = useState(0);
   const [sellingPrice, setSellingPrice] = useState(0);
-  const [oilMultiplier, setOilMultiplier] = useState(0);
+
 
   const concentrations = { parfum: 0.40, eau_de_parfum: 0.35, eau_de_toilette: 0.20, eau_de_cologne: 0.15};
 
@@ -164,11 +159,7 @@ export default function PerfumeCalculatorSite() {
                     placeholder="سعر البيع"
                     onChange={(e) => setSellingPrice(Number(e.target.value))}
                   />
-                  <Input
-                    type="number"
-                    placeholder="مضاعف الزيت (*2، *3 ...)"
-                    onChange={(e) => setOilMultiplier(Number(e.target.value))}
-                  />
+
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-4">
