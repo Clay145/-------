@@ -52,12 +52,21 @@ export default function PerfumeCalculatorSite() {
   }, [result, oilCostPerMl, alcoholCostPerMl, bottleCost, sellingPrice]);
 
   return (
-    <div className="min-h-screen overflow-x-hidden" style={{
-      backgroundImage: 'url(https://manforhimself.com/wp-content/uploads/2025/06/Summer-Signature-Scent-Man-For-Himself-Mens-Fragrance-Quiz-ft.jpg)',
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-      backgroundRepeat: 'no-repeat'
-    }}>
+    <div className="min-h-screen overflow-x-hidden" style={{ backgroundColor: '#1a1a2e' }}>
+      {/* Fixed background that adapts to mobile/desktop */}
+      <div style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        backgroundImage: 'url(https://manforhimself.com/wp-content/uploads/2025/06/Summer-Signature-Scent-Man-For-Himself-Mens-Fragrance-Quiz-ft.jpg)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center center',
+        backgroundRepeat: 'no-repeat',
+        zIndex: 0,
+      }} />
+      <div style={{ position: 'relative', zIndex: 1 }}>
       <div className="relative h-[380px] w-full">
         <div className="absolute inset-0 bg-black/25" />
         {[...Array(12)].map((_, i) => (
@@ -416,6 +425,7 @@ export default function PerfumeCalculatorSite() {
             </CardContent>
           </Card>
         </motion.div>
+      </div>
       </div>
     </div>
   );
