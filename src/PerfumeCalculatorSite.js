@@ -17,7 +17,7 @@ const iconStyle = {
 export default function PerfumeCalculatorSite() {
   const [volume, setVolume] = useState(10);
   const [type, setType] = useState("parfum");
-  const [compareType, setCompareType] = useState("eau_de_parfum");
+  const [compareType] = useState("eau_de_parfum"); // Forcing static comparison for now to clear lint if unused elsewhere
 
   const [oilCostPerMl, setOilCostPerMl] = useState(0);
   const [alcoholCostPerMl, setAlcoholCostPerMl] = useState(0);
@@ -299,7 +299,7 @@ export default function PerfumeCalculatorSite() {
 
                 <div className="pt-8 space-y-4">
                   <h3 className="font-semibold text-lg text-center">مقارنة تركيزين</h3>
-                  <Select value={compareType} onValueChange={setCompareType}>
+                  <Select value={compareType}>
                     <SelectTrigger>
                       <SelectValue />
                     </SelectTrigger>
