@@ -75,9 +75,9 @@ export default function PerfumeCalculatorSite() {
         </div>
       </div>
 
-      <div className="max-w-4xl mx-auto p-6 -mt-16">
+      <div className="max-w-4xl mx-auto p-6 mt-6">
         <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-          <Card className="rounded-2xl shadow-2xl border border-white/30" style={{ background: "rgba(255,255,255,0.55)", backdropFilter: "blur(24px)", WebkitBackdropFilter: "blur(24px)" }}>
+          <Card className="rounded-2xl shadow-2xl border border-white/20" style={{ background: "rgba(255,255,255,0.78)", backdropFilter: "blur(28px)", WebkitBackdropFilter: "blur(28px)" }}>
             <CardContent className="p-6 md:p-8 space-y-6">
               <div className="flex items-center gap-2 text-xl font-semibold">
                 <Calculator style={iconStyle} className="w-5 h-5" />
@@ -209,29 +209,73 @@ export default function PerfumeCalculatorSite() {
                 </motion.div>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-4 pt-4">
-                <motion.div whileHover={{ scale: 1.03 }}>
-                  <Card className="rounded-2xl border border-white/30" style={{ background: "rgba(255, 237, 196, 0.4)", backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)" }}>
-                    <CardContent className="p-5 flex items-center gap-3">
-                      <Droplets style={iconStyle} className="w-6 h-6" />
-                      <div>
-                        <p className="text-sm opacity-70">الزيت</p>
-                        <p className="text-xl font-semibold">{result.oil} مل</p>
+              <div className="grid md:grid-cols-2 gap-5 pt-4">
+                <motion.div
+                  whileHover={{ scale: 1.04, y: -4 }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                >
+                  <div style={{
+                    background: "rgba(255, 237, 196, 0.35)",
+                    backdropFilter: "blur(14px)",
+                    WebkitBackdropFilter: "blur(14px)",
+                    borderRadius: "20px",
+                    padding: "24px",
+                    border: "1px solid rgba(255, 200, 100, 0.35)",
+                    boxShadow: "0 8px 32px rgba(255, 180, 50, 0.15), 0 2px 8px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.7)",
+                    position: "relative",
+                    overflow: "hidden",
+                  }}>
+                    <div style={{ position: "absolute", top: "-20px", right: "-20px", width: "80px", height: "80px", background: "radial-gradient(circle, rgba(255,200,50,0.2), transparent 70%)", borderRadius: "50%" }} />
+                    <div style={{ display: "flex", alignItems: "center", gap: "14px", position: "relative" }}>
+                      <div style={{
+                        background: "linear-gradient(145deg, #FFD54F, #FFB300)",
+                        borderRadius: "14px",
+                        padding: "12px",
+                        boxShadow: "0 4px 12px rgba(255, 179, 0, 0.35)",
+                      }}>
+                        <Droplets style={{ width: "24px", height: "24px", color: "#fff" }} />
                       </div>
-                    </CardContent>
-                  </Card>
+                      <div>
+                        <p style={{ fontSize: "13px", color: "#8D6E63", fontWeight: "500", margin: 0 }}>كمية الزيت المطلوبة</p>
+                        <p style={{ fontSize: "28px", fontWeight: "800", color: "#3E2723", margin: "2px 0 0 0", letterSpacing: "-0.5px" }}>{result.oil} <span style={{ fontSize: "16px", fontWeight: "600", color: "#8D6E63" }}>مل</span></p>
+                      </div>
+                    </div>
+                  </div>
                 </motion.div>
 
-                <motion.div whileHover={{ scale: 1.03 }}>
-                  <Card className="rounded-2xl border border-white/30" style={{ background: "rgba(255, 228, 230, 0.4)", backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)" }}>
-                    <CardContent className="p-5 flex items-center gap-3">
-                      <FlaskConical style={iconStyle} className="w-6 h-6" />
-                      <div>
-                        <p className="text-sm opacity-70">الكحول</p>
-                        <p className="text-xl font-semibold">{result.alcohol} مل</p>
+                <motion.div
+                  whileHover={{ scale: 1.04, y: -4 }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                >
+                  <div style={{
+                    background: "rgba(255, 228, 230, 0.35)",
+                    backdropFilter: "blur(14px)",
+                    WebkitBackdropFilter: "blur(14px)",
+                    borderRadius: "20px",
+                    padding: "24px",
+                    border: "1px solid rgba(244, 143, 177, 0.35)",
+                    boxShadow: "0 8px 32px rgba(244, 143, 177, 0.15), 0 2px 8px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.7)",
+                    position: "relative",
+                    overflow: "hidden",
+                  }}>
+                    <div style={{ position: "absolute", top: "-20px", right: "-20px", width: "80px", height: "80px", background: "radial-gradient(circle, rgba(244,143,177,0.2), transparent 70%)", borderRadius: "50%" }} />
+                    <div style={{ display: "flex", alignItems: "center", gap: "14px", position: "relative" }}>
+                      <div style={{
+                        background: "linear-gradient(145deg, #F48FB1, #E91E63)",
+                        borderRadius: "14px",
+                        padding: "12px",
+                        boxShadow: "0 4px 12px rgba(233, 30, 99, 0.3)",
+                      }}>
+                        <FlaskConical style={{ width: "24px", height: "24px", color: "#fff" }} />
                       </div>
-                    </CardContent>
-                  </Card>
+                      <div>
+                        <p style={{ fontSize: "13px", color: "#AD1457", fontWeight: "500", margin: 0 }}>كمية الكحول المطلوبة</p>
+                        <p style={{ fontSize: "28px", fontWeight: "800", color: "#880E4F", margin: "2px 0 0 0", letterSpacing: "-0.5px" }}>{result.alcohol} <span style={{ fontSize: "16px", fontWeight: "600", color: "#AD1457" }}>مل</span></p>
+                      </div>
+                    </div>
+                  </div>
                 </motion.div>
               </div>
 
@@ -319,25 +363,53 @@ export default function PerfumeCalculatorSite() {
                   ))}
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-4">
-                  <Card className="rounded-xl border border-white/30" style={{ background: "rgba(255, 251, 235, 0.45)", backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)" }}>
-                    <CardContent className="p-4">
-                      <p className="text-sm opacity-70">التكلفة</p>
-                      <p className="text-xl font-semibold">
-                        {financials.totalCost}
-                      </p>
-                    </CardContent>
-                  </Card>
+                <div className="grid md:grid-cols-2 gap-5">
+                  <motion.div
+                    whileHover={{ scale: 1.04, y: -4 }}
+                    whileTap={{ scale: 0.98 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  >
+                    <div style={{
+                      background: "rgba(255, 243, 224, 0.4)",
+                      backdropFilter: "blur(14px)",
+                      WebkitBackdropFilter: "blur(14px)",
+                      borderRadius: "20px",
+                      padding: "24px",
+                      border: "1px solid rgba(255, 183, 77, 0.3)",
+                      boxShadow: "0 8px 32px rgba(255, 152, 0, 0.12), 0 2px 8px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,0.7)",
+                      position: "relative",
+                      overflow: "hidden",
+                    }}>
+                      <div style={{ position: "absolute", top: "-15px", right: "-15px", width: "60px", height: "60px", background: "radial-gradient(circle, rgba(255,152,0,0.15), transparent 70%)", borderRadius: "50%" }} />
+                      <div style={{ position: "relative" }}>
+                        <p style={{ fontSize: "13px", color: "#E65100", fontWeight: "600", margin: "0 0 4px 0" }}>📊 إجمالي التكلفة</p>
+                        <p style={{ fontSize: "30px", fontWeight: "800", color: "#BF360C", margin: 0, letterSpacing: "-0.5px" }}>{financials.totalCost} <span style={{ fontSize: "14px", fontWeight: "600", color: "#E65100" }}>د.ج</span></p>
+                      </div>
+                    </div>
+                  </motion.div>
 
-                  <motion.div whileHover={{ scale: 1.05 }}>
-                    <Card className="rounded-xl border border-white/30" style={{ background: "rgba(236, 253, 245, 0.45)", backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)" }}>
-                      <CardContent className="p-4">
-                        <p className="text-sm opacity-70">الربح</p>
-                        <p className="text-xl font-semibold">
-                          {financials.profit}
-                        </p>
-                      </CardContent>
-                    </Card>
+                  <motion.div
+                    whileHover={{ scale: 1.04, y: -4 }}
+                    whileTap={{ scale: 0.98 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  >
+                    <div style={{
+                      background: "rgba(232, 245, 233, 0.4)",
+                      backdropFilter: "blur(14px)",
+                      WebkitBackdropFilter: "blur(14px)",
+                      borderRadius: "20px",
+                      padding: "24px",
+                      border: "1px solid rgba(76, 175, 80, 0.3)",
+                      boxShadow: "0 8px 32px rgba(76, 175, 80, 0.15), 0 2px 8px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,0.7)",
+                      position: "relative",
+                      overflow: "hidden",
+                    }}>
+                      <div style={{ position: "absolute", top: "-15px", right: "-15px", width: "60px", height: "60px", background: "radial-gradient(circle, rgba(76,175,80,0.15), transparent 70%)", borderRadius: "50%" }} />
+                      <div style={{ position: "relative" }}>
+                        <p style={{ fontSize: "13px", color: "#2E7D32", fontWeight: "600", margin: "0 0 4px 0" }}>💰 صافي الربح</p>
+                        <p style={{ fontSize: "30px", fontWeight: "800", color: "#1B5E20", margin: 0, letterSpacing: "-0.5px" }}>{financials.profit} <span style={{ fontSize: "14px", fontWeight: "600", color: "#2E7D32" }}>د.ج</span></p>
+                      </div>
+                    </div>
                   </motion.div>
                 </div>
               </div>
