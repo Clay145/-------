@@ -426,7 +426,7 @@ export default function PerfumeCalculatorSite() {
           </Card>
         </motion.div>
       </div>
-      </div>
     </div>
+  </div>
   );
 }
