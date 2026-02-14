@@ -88,7 +88,7 @@ export default function PerfumeCalculatorSite() {
                 {/* Volume Input Card */}
                 <motion.div whileHover={{ scale: 1.01 }} transition={{ duration: 0.2 }}>
                   <div style={{
-                    background: "rgba(255, 248, 231, 0.45)",
+                    background: "rgba(255, 248, 231, 0.47)",
                     backdropFilter: "blur(16px)",
                     WebkitBackdropFilter: "blur(16px)",
                     borderRadius: "16px",
