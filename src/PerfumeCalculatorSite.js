@@ -77,7 +77,7 @@ export default function PerfumeCalculatorSite() {
 
       <div className="max-w-4xl mx-auto p-6 -mt-16">
         <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-          <Card className="rounded-2xl shadow-2xl backdrop-blur bg-white/95 border border-amber-100">
+          <Card className="rounded-2xl shadow-2xl border border-white/30" style={{ background: "rgba(255,255,255,0.55)", backdropFilter: "blur(24px)", WebkitBackdropFilter: "blur(24px)" }}>
             <CardContent className="p-6 md:p-8 space-y-6">
               <div className="flex items-center gap-2 text-xl font-semibold">
                 <Calculator style={iconStyle} className="w-5 h-5" />
@@ -88,11 +88,13 @@ export default function PerfumeCalculatorSite() {
                 {/* Volume Input Card */}
                 <motion.div whileHover={{ scale: 1.01 }} transition={{ duration: 0.2 }}>
                   <div style={{
-                    background: "linear-gradient(135deg, #FFF8E7, #FFF1D6)",
+                    background: "rgba(255, 248, 231, 0.45)",
+                    backdropFilter: "blur(16px)",
+                    WebkitBackdropFilter: "blur(16px)",
                     borderRadius: "16px",
                     padding: "20px",
-                    border: "1px solid #F5DEB3",
-                    boxShadow: "0 2px 8px rgba(0,0,0,0.06)",
+                    border: "1px solid rgba(245, 222, 179, 0.4)",
+                    boxShadow: "0 4px 16px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.6)",
                   }}>
                     <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "12px" }}>
                       <div style={{
@@ -156,11 +158,13 @@ export default function PerfumeCalculatorSite() {
                 {/* Concentration Select Card */}
                 <motion.div whileHover={{ scale: 1.01 }} transition={{ duration: 0.2 }}>
                   <div style={{
-                    background: "linear-gradient(135deg, #F3E8FF, #EDE0FF)",
+                    background: "rgba(243, 232, 255, 0.45)",
+                    backdropFilter: "blur(16px)",
+                    WebkitBackdropFilter: "blur(16px)",
                     borderRadius: "16px",
                     padding: "20px",
-                    border: "1px solid #D8C4F0",
-                    boxShadow: "0 2px 8px rgba(0,0,0,0.06)",
+                    border: "1px solid rgba(216, 196, 240, 0.4)",
+                    boxShadow: "0 4px 16px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.6)",
                   }}>
                     <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "12px" }}>
                       <div style={{
@@ -207,7 +211,7 @@ export default function PerfumeCalculatorSite() {
 
               <div className="grid md:grid-cols-2 gap-4 pt-4">
                 <motion.div whileHover={{ scale: 1.03 }}>
-                  <Card className="rounded-2xl bg-gradient-to-br from-amber-100 to-amber-50">
+                  <Card className="rounded-2xl border border-white/30" style={{ background: "rgba(255, 237, 196, 0.4)", backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)" }}>
                     <CardContent className="p-5 flex items-center gap-3">
                       <Droplets style={iconStyle} className="w-6 h-6" />
                       <div>
@@ -219,7 +223,7 @@ export default function PerfumeCalculatorSite() {
                 </motion.div>
 
                 <motion.div whileHover={{ scale: 1.03 }}>
-                  <Card className="rounded-2xl bg-gradient-to-br from-rose-100 to-rose-50">
+                  <Card className="rounded-2xl border border-white/30" style={{ background: "rgba(255, 228, 230, 0.4)", backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)" }}>
                     <CardContent className="p-5 flex items-center gap-3">
                       <FlaskConical style={iconStyle} className="w-6 h-6" />
                       <div>
@@ -283,10 +287,13 @@ export default function PerfumeCalculatorSite() {
                     { label: "💰 سعر البيع النهائي", hint: "بكم ستبيع العطر؟", setter: setSellingPrice },
                   ].map((item, i) => (
                     <div key={i} style={{
-                      background: "#FAFAFA",
+                      background: "rgba(250, 250, 250, 0.4)",
+                      backdropFilter: "blur(12px)",
+                      WebkitBackdropFilter: "blur(12px)",
                       borderRadius: "12px",
                       padding: "14px",
-                      border: "1px solid #E0E0E0",
+                      border: "1px solid rgba(224, 224, 224, 0.4)",
+                      boxShadow: "inset 0 1px 0 rgba(255,255,255,0.5)",
                     }}>
                       <p style={{ fontWeight: "600", fontSize: "14px", color: "#333", margin: "0 0 2px 0" }}>{item.label}</p>
                       <p style={{ fontSize: "11px", color: "#999", margin: "0 0 8px 0" }}>{item.hint}</p>
@@ -313,7 +320,7 @@ export default function PerfumeCalculatorSite() {
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-4">
-                  <Card className="rounded-xl bg-amber-50">
+                  <Card className="rounded-xl border border-white/30" style={{ background: "rgba(255, 251, 235, 0.45)", backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)" }}>
                     <CardContent className="p-4">
                       <p className="text-sm opacity-70">التكلفة</p>
                       <p className="text-xl font-semibold">
@@ -323,7 +330,7 @@ export default function PerfumeCalculatorSite() {
                   </Card>
 
                   <motion.div whileHover={{ scale: 1.05 }}>
-                    <Card className="rounded-xl bg-emerald-50">
+                    <Card className="rounded-xl border border-white/30" style={{ background: "rgba(236, 253, 245, 0.45)", backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)" }}>
                       <CardContent className="p-4">
                         <p className="text-sm opacity-70">الربح</p>
                         <p className="text-xl font-semibold">
