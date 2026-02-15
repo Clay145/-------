@@ -14,7 +14,7 @@ const iconStyle = {
 };
 
 // Deployment Trigger: 2026-02-14 20:30
-const WHATSAPP_NUMBER = "213552352753";
+const WHATSAPP_NUMBER = "213542556695";
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("سلام عليكم , ارسل لي القائمة من فضلك")}`;
 
 export default function PerfumeCalculatorSite() {
