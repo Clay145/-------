@@ -1,6 +1,7 @@
 {
   "name": "bait-el-oud-calc",
-  "version": "0.1.0",
+  "version": "1.0.1",
+  "description": "Bait el Oud Calculator - Modern Version",
   "private": true,
   "dependencies": {
     "@radix-ui/react-select": "^2.2.6",
