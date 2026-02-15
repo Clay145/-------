@@ -1,8 +1,8 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect, useRef, useCallback } from "react";
 import { Card, CardContent } from "./components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./components/ui/select";
-import { motion } from "framer-motion";
-import { Droplets, FlaskConical, Calculator, Sparkles, TrendingUp } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Droplets, FlaskConical, Calculator, Sparkles, TrendingUp, MessageCircle } from "lucide-react";
 
 // ألوان أيقونات متناسقة وثلاثية الأبعاد باستخدام تأثير ظل وgradient
 const iconStyle = {
@@ -14,15 +14,32 @@ const iconStyle = {
 };
 
 // Deployment Trigger: 2026-02-14 20:30
+const WHATSAPP_NUMBER = "213552352753";
+const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("سلام عليكم , ارسل لي القائمة من فضلك")}`;
+
 export default function PerfumeCalculatorSite() {
   const [volume, setVolume] = useState(10);
   const [type, setType] = useState("parfum");
-  const [compareType] = useState("eau_de_parfum"); // Forcing static comparison for now to clear lint if unused elsewhere
+  const [compareType] = useState("eau_de_parfum");
 
   const [oilCostPerMl, setOilCostPerMl] = useState(0);
   const [alcoholCostPerMl, setAlcoholCostPerMl] = useState(0);
   const [bottleCost, setBottleCost] = useState(0);
   const [sellingPrice, setSellingPrice] = useState(0);
+
+  // Scroll-aware state for WhatsApp label
+  const [isScrolled, setIsScrolled] = useState(false);
+  const labelRef = useRef(null);
+
+  const handleScroll = useCallback(() => {
+    const scrollY = window.scrollY || window.pageYOffset;
+    setIsScrolled(scrollY > 320);
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [handleScroll]);
 
   const concentrations = { parfum: 0.40, eau_de_parfum: 0.35, eau_de_toilette: 0.20, eau_de_cologne: 0.15};
 
@@ -78,6 +95,73 @@ export default function PerfumeCalculatorSite() {
                 حاسبة تجارة العطور الاحترافية من بيت العود والعطور الفاخرة
               </h1>
               <p className="text-base md:text-lg opacity-95">تعلم تركيبة العطر خلال ثوانٍ وابدأ البيع بثقة.</p>
+
+              {/* WhatsApp Supplier Label — Full Mode */}
+              <div ref={labelRef} style={{ marginTop: "20px" }}>
+                <AnimatePresence>
+                  {!isScrolled && (
+                    <motion.a
+                      href={WHATSAPP_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      initial={{ opacity: 0, y: 20, scale: 0.9 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: -10, scale: 0.8 }}
+                      transition={{ duration: 0.5, ease: "easeOut" }}
+                      whileHover={{ scale: 1.05, y: -2 }}
+                      whileTap={{ scale: 0.97 }}
+                      style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "10px",
+                        padding: "14px 28px",
+                        borderRadius: "16px",
+                        background: "rgba(255, 255, 255, 0.15)",
+                        backdropFilter: "blur(20px)",
+                        WebkitBackdropFilter: "blur(20px)",
+                        border: "1px solid rgba(255, 255, 255, 0.3)",
+                        boxShadow: "0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(0, 0, 0, 0.1), 0 0 20px rgba(37, 211, 102, 0.15)",
+                        textDecoration: "none",
+                        cursor: "pointer",
+                        position: "relative",
+                        overflow: "hidden",
+                      }}
+                    >
+                      {/* 3D Gloss sweep overlay */}
+                      <div style={{
+                        position: "absolute",
+                        top: 0,
+                        left: "-100%",
+                        width: "200%",
+                        height: "100%",
+                        background: "linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.25) 45%, rgba(255,255,255,0.35) 50%, rgba(255,255,255,0.25) 55%, transparent 60%)",
+                        animation: "glossSweep 4s ease-in-out infinite",
+                        pointerEvents: "none",
+                      }} />
+                      <div style={{
+                        background: "linear-gradient(145deg, #25D366, #128C7E)",
+                        borderRadius: "10px",
+                        padding: "8px",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        boxShadow: "0 2px 8px rgba(37, 211, 102, 0.4)",
+                      }}>
+                        <MessageCircle style={{ width: "20px", height: "20px", color: "#fff" }} />
+                      </div>
+                      <span style={{
+                        color: "#fff",
+                        fontWeight: "700",
+                        fontSize: "15px",
+                        textShadow: "0 1px 3px rgba(0,0,0,0.3)",
+                        letterSpacing: "0.3px",
+                      }}>
+                        🛒 اقوى مصدر للعطور ومستلزماتها وبجودة عالية
+                      </span>
+                    </motion.a>
+                  )}
+                </AnimatePresence>
+              </div>
             </motion.div>
           </div>
         </div>
@@ -425,6 +509,84 @@ export default function PerfumeCalculatorSite() {
           </motion.div>
         </div>
       </div>
+
+      {/* WhatsApp Supplier Label — Compact Floating Mode */}
+      <AnimatePresence>
+        {isScrolled && (
+          <motion.a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            initial={{ opacity: 0, x: 80, scale: 0.5 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            exit={{ opacity: 0, x: 80, scale: 0.5 }}
+            transition={{ type: "spring", stiffness: 300, damping: 25 }}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.92 }}
+            style={{
+              position: "fixed",
+              right: "20px",
+              top: "50%",
+              transform: "translateY(-50%)",
+              zIndex: 50,
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+              padding: "12px 18px",
+              borderRadius: "50px",
+              background: "rgba(255, 255, 255, 0.12)",
+              backdropFilter: "blur(24px)",
+              WebkitBackdropFilter: "blur(24px)",
+              border: "1px solid rgba(255, 255, 255, 0.25)",
+              boxShadow: "0 8px 32px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 0 15px rgba(37, 211, 102, 0.2)",
+              textDecoration: "none",
+              cursor: "pointer",
+              overflow: "hidden",
+            }}
+          >
+            {/* Gloss sweep for compact */}
+            <div style={{
+              position: "absolute",
+              top: 0,
+              left: "-100%",
+              width: "200%",
+              height: "100%",
+              background: "linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.2) 45%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0.2) 55%, transparent 60%)",
+              animation: "glossSweep 4s ease-in-out infinite",
+              pointerEvents: "none",
+            }} />
+            <div style={{
+              background: "linear-gradient(145deg, #25D366, #128C7E)",
+              borderRadius: "50%",
+              padding: "8px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              boxShadow: "0 2px 8px rgba(37, 211, 102, 0.5)",
+            }}>
+              <MessageCircle style={{ width: "18px", height: "18px", color: "#fff" }} />
+            </div>
+            <span style={{
+              color: "#fff",
+              fontWeight: "700",
+              fontSize: "13px",
+              textShadow: "0 1px 3px rgba(0,0,0,0.4)",
+              whiteSpace: "nowrap",
+            }}>
+              🛒 شراء
+            </span>
+          </motion.a>
+        )}
+      </AnimatePresence>
+
+      {/* Gloss sweep animation keyframes */}
+      <style>{`
+        @keyframes glossSweep {
+          0% { transform: translateX(-30%); }
+          50% { transform: translateX(30%); }
+          100% { transform: translateX(-30%); }
+        }
+      `}</style>
     </div>
   );
-}// Verification Commit - Sat, Feb 14, 2026  8:15:45 PM
+}

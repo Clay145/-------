@@ -1,0 +1,6 @@
+{
+  "version": 2,
+  "framework": "create-react-app",
+  "regions": ["cdg1"],
+  "cleanUrls": true
+}
